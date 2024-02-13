@@ -1,0 +1,54 @@
+{
+  "orders":[
+	  {
+		"id": 1,
+		"customerId": "83-5980503",
+		"productName": "Black backpack",
+		"status": "paid",
+		"customerName": "Bradney",
+		"orderDate": "1/5/2024",
+		"price" : "$205.82",
+		"productImage": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+	  },
+	  {
+		"id": 2,
+		"customerId": "52-3963632",
+		"productName": "Black Sneakers",
+		"status": "paid",
+		"customerName": "Heath",
+		"orderDate": "1/16/2024",
+		"price" : "$205.82",
+		"productImage": "https://img.freepik.com/free-photo/fashion-shoes-sneakers_1203-7530.jpg"
+	  },
+	  {
+		"id": 3,
+		"customerId": "88-9590615",
+		"productName": "Brown Jacket",
+		"status": "pending",
+		"customerName": "Fiann",
+		"orderDate": "6/21/2023",
+		"price" : "$205.82",
+		"productImage": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+	  },
+	  {
+		"id": 4,
+		"customerId": "18-6218216",
+		"productName": "Black Fashion backpack",
+		"status": "shipped",
+		"customerName": "Willis",
+		"orderDate": "4/15/2023",
+		"price" : "$205.82",
+		"productImage": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+	  },
+	  {
+		"id": 5,
+		"customerId": "41-4151072",
+		"productName": "grey tshirt",
+		"status": "paid",
+		"customerName": "Meyer",
+		"orderDate": "1/1/2024",
+		"price" : "$205.82",
+		"productImage": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+	  }
+	]
+}

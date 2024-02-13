@@ -1,0 +1,96 @@
+<div class="container">
+  <div style="width: 100%;">
+    <div class="content">
+      <p> Dashboard</p>
+    </div>
+    <div class="rowContainer">
+      <div class="tableContainer">
+        <table mat-table [dataSource]="products" class="mat-elevation-z8">
+          <ng-container matColumnDef="recentOrders">
+            <th mat-header-cell *matHeaderCellDef colspan="6" class="recent-orders-header"> Recent Orders
+            </th>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="['recentOrders']"></tr>
+        </table>
+        <table mat-table [dataSource]="products" class="mat-elevation-z8">
+
+          <div class="tableData">
+            <ng-container matColumnDef="customerId">
+              <th mat-header-cell *matHeaderCellDef> Customer ID </th>
+              <td mat-cell *matCellDef="let order"> {{ order.customerId }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="productName">
+              <th mat-header-cell *matHeaderCellDef> Product Name </th>
+              <td mat-cell *matCellDef="let order" class="product-cell">
+                <div class="product-container">
+                  <img [src]="order.productImage" alt="Product Image" width="25" height="25"> <!-- Add the image -->
+                  <span>{{ order.productName }}</span>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="orderDate">
+              <th mat-header-cell *matHeaderCellDef> Order Date </th>
+              <td mat-cell *matCellDef="let order"> {{ order.orderDate }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef> Price </th>
+              <td mat-cell *matCellDef="let order"> {{ order.price }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Status </th>
+              <td mat-cell *matCellDef="let order">
+                <button mat-stroked-button *ngIf="!order.editing" [ngStyle]="getStatusButtonStyle(order.status)"
+                  (click)="toggleEdit(order)">
+                  {{ order.status }}
+                </button>
+                <select *ngIf="order.editing" [(ngModel)]="order.status" (change)="updateStatus(order)">
+                  <option value="pending">Pending</option>
+                  <option value="paid">Paid</option>
+                  <option value="shipped">Shipped</option>
+                </select>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="customerName">
+              <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+              <td mat-cell *matCellDef="let order"> {{ order.customerName }} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </div>
+        </table>
+      </div>
+      <div class="chartContainer">
+        <mat-card class="mt-5 mb-4">
+          <mat-card-header>
+            <mat-card-title>Order Status</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <canvas id="myChart"></canvas>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+    </div>
+  </div>
+
+  <div style="width: 80%;">
+    <div class="lineChartContainer">
+      <div style="width: 100%;">
+        <mat-card class="mt-5 mb-4">
+          <mat-card-header>
+            <mat-card-title>Montly Activity</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <canvas id="lineChart" width="200" height="50"></canvas>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
