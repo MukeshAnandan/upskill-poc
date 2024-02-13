@@ -1,12 +1,13 @@
 .container {
   margin-top: 20px;
-  // display: flex;
   margin: 2rem; 
   width: 100%; 
   height: 40.45rem; 
-  // display: flex;
 }
 
+.innerContainer {
+  width: 100%;
+}
 .rowContainer{
   display: flex;
   align-items: flex-start;
@@ -66,7 +67,6 @@ th.mat-header-cell, td.mat-cell {
   background-color: #e0e0e0;
 }
 
-/* Your global styles or component-specific CSS file */
 .product-cell {
   text-align: center;
 }
@@ -77,7 +77,7 @@ th.mat-header-cell, td.mat-cell {
 }
 
 .product-container img {
-  margin-right: 10px; /* Adjust this margin as needed */
+  margin-right: 10px;
 }
 
 .lineChartContainer {
@@ -92,8 +92,15 @@ th.mat-header-cell, td.mat-cell {
   color: black;
 }
 .tableData{
-  overflow: auto; /* Add horizontal and vertical scrollbar if needed */
-  max-height: 200px; /* Set maximum height */
+  overflow: auto;
+  max-height: 200px;
+}
+
+.lineChartOutercontainer {
+  width: 80%;
+}
+.lineChartInnerContainer {
+  width: 100%;
 }
 
 .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
@@ -113,48 +120,12 @@ th.mat-header-cell, td.mat-cell {
   vertical-align: baseline;
   text-align: center;
   margin: 0;
-  /* min-width: 64px; */
   line-height: 20px;
   padding: 0;
   border-radius: 4px;
 }
-  
 
-// /**
-// **/
-// .tableContainer {
-//   overflow-x: auto;
-//   max-height: 350px; /* Set your desired maximum height for scroll */
-// }
 
-// .tableData table {
-//   width: 100%;
-//   border-collapse: collapse;
-// }
-
-// .tableData th,
-// .tableData td {
-//   padding: 8px;
-//   border-bottom: 1px solid #ddd;
-// }
-
-// .tableData th {
-//   position: fixed;
-//   top: 0;
-//   background-color: #f2f2f2;
-// }
-
-// .tableData td {
-//   background-color: #fff;
-// }
-
-// .tableData tr:nth-child(even) {
-//   background-color: #f2f2f2;
-// }
-
-// .tableData tr:hover {
-//   background-color: #ddd;
-// }
 
 
 

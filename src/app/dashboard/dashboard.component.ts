@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Chart, registerables } from 'chart.js';
-
-// Import the specific chart types you need
 import { PieController } from 'chart.js';
 
-// Register the chart types
 Chart.register(...registerables, PieController);
-
-
 
 interface Order {
   id: number;
@@ -17,7 +12,7 @@ interface Order {
   status: string;
   customerName: string;
   orderDate: string;
-  price?: string; // Optional property
+  price?: string;
   productImage: string;
 }
 
@@ -32,7 +27,7 @@ export class DashboardComponent implements OnInit {
   products: Order[] = [];
   chart: any;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     Chart.register(...registerables);
   }
 
@@ -42,10 +37,10 @@ export class DashboardComponent implements OnInit {
 
   fetchOrders(): void {
     this.http.get('http://localhost:3000/orders')
-      .subscribe((orders: any)  => {
-         this.products = orders;
-         this.createPieChart();
-         this.createLineChart();
+      .subscribe((orders: any) => {
+        this.products = orders;
+        this.createPieChart();
+        this.createLineChart();
       });
   }
 
@@ -58,7 +53,7 @@ export class DashboardComponent implements OnInit {
       case 'shipped':
         return 'blue';
       default:
-        return 'black'; // Default color if status is not recognized
+        return 'black';
     }
   }
 
@@ -160,7 +155,7 @@ export class DashboardComponent implements OnInit {
         buttonStyle = { 'color': 'orange' };
         break;
       case 'paid':
-        buttonStyle = {  'color': 'green' };
+        buttonStyle = { 'color': 'green' };
         break;
       case 'shipped':
         buttonStyle = { 'color': 'blue' };
@@ -171,5 +166,5 @@ export class DashboardComponent implements OnInit {
     return buttonStyle;
   }
 
-  
+
 }

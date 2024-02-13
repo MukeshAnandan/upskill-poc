@@ -9,7 +9,6 @@ export class SidebarComponent implements OnInit {
   dashboardSubmenuVisible: boolean = false;
   pagesSubmenuVisible: boolean = false;
 
-
   constructor() { }
 
   ngOnInit(): void {

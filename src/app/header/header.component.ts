@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -15,8 +14,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  
 
   applyFilter(event: Event) {
     const inputElement = event.target as HTMLInputElement;
