@@ -3,6 +3,10 @@
     background-color: #00233F;
     color: #87A3B3;
     padding-top: 50px;
+    position: relative;
+  }
+  .logo{
+    margin-left:10px;
   }
   .arrow{
     padding-right: 0.8rem;
@@ -17,6 +21,7 @@
   }
   
   .sidebar ul li a {
+    font-weight: bold;
     display: block;
     padding: 10px 15px;
     color: #87A3B3;
@@ -25,6 +30,8 @@
   
   .sidebar ul li a:hover {
     background-color: #013236;
+    border-radius: 10px;
+    color: #00BECD;
   }
   
   .sidebar .arrow {
@@ -40,13 +47,18 @@
   }
   
   .sidebar .submenu li a {
+    font-size: 15px;
+    font-weight: lighter;
     padding: 5px 15px;
     color: #87A3B3;
     text-decoration: none;
   }
   
   .sidebar .submenu li a:hover {
+    font-weight: bold;
     background-color: #013236;
+    border-radius: 10px;
+    color: #fff;
   }
 
   .sidebar .list-unstyled li a {
@@ -56,6 +68,12 @@
   
   .sidebar .list-unstyled li a i {
     margin-right: 5px;
+  }
+  
+  .welcome-image {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
   }
   
   

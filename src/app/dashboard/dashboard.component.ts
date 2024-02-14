@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Chart, registerables } from 'chart.js';
 import { PieController } from 'chart.js';
+import { ProductService } from '../service/product.service';
 
 Chart.register(...registerables, PieController);
 
@@ -23,66 +24,69 @@ interface Order {
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  displayedColumns: string[] = ['customerId', 'productName', 'orderDate', 'price', 'status', 'customerName'];
+  displayedColumns: string[] = [
+    'customerId', 
+    'productName', 
+    'orderDate', 
+    'price', 
+    'status', 
+    'customerName'];
   products: Order[] = [];
   chart: any;
+  lineChart: any;
+  filteredProducts: any[] | undefined;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private productService: ProductService) {
     Chart.register(...registerables);
   }
 
   ngOnInit(): void {
     this.fetchOrders();
+    this.productService.search.subscribe((val:any)=>{
+      this.applySearchFilter(val);
+    })
   }
 
   fetchOrders(): void {
-    this.http.get('http://localhost:3000/orders')
+    this.productService.getOrders()
       .subscribe((orders: any) => {
+        console.log("fetch orders", orders);
         this.products = orders;
         this.createPieChart();
         this.createLineChart();
       });
   }
 
+  applySearchFilter(searchTerm: string): void {
+    this.filteredProducts = this.products
+      .filter(product => product.productName.toLowerCase().includes(searchTerm.toLowerCase()));
+    console.log("filtered products:", this.filteredProducts);
+  }
+
   getStatusColor(status: string): string {
-    switch (status) {
-      case 'paid':
-        return 'green';
-      case 'pending':
-        return 'orange';
-      case 'shipped':
-        return 'blue';
-      default:
-        return 'black';
-    }
+    const statusColors: { [key: string]: string } = {
+      'paid': 'green',
+      'pending': 'orange',
+      'shipped': 'blue'
+    };
+  
+    return statusColors[status] || 'black';
   }
 
   createPieChart(): void {
-    const statusCounts = {
-      paid: 0,
-      pending: 0,
-      shipped: 0
-    };
+    // Destroy existing chart if it exists
+    if (this.chart) {
+      this.chart.destroy();
+    }
+    const statusCounts: { [key: string]: number } = {};
 
     this.products.forEach(order => {
-      switch (order.status) {
-        case 'paid':
-          statusCounts.paid++;
-          break;
-        case 'pending':
-          statusCounts.pending++;
-          break;
-        case 'shipped':
-          statusCounts.shipped++;
-          break;
-        default:
-          break;
-      }
+      statusCounts[order.status] = (statusCounts[order.status] || 0) + 1;
     });
 
     const statusData = Object.values(statusCounts);
     const statusLabels = Object.keys(statusCounts);
-
+    
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
 
     this.chart = new Chart(ctx, {
@@ -113,14 +117,20 @@ export class DashboardComponent implements OnInit {
   }
 
   createLineChart(): void {
+    // Destroy existing chart if it exists
+    if (this.lineChart) {
+      this.lineChart.destroy();
+    }
+    const data = [65, 59, 80, 81, 56, 55, 40, 30, 45, 60, 70, 80]; // Example data for each month
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const ctx = document.getElementById('lineChart') as HTMLCanvasElement;
-    this.chart = new Chart(ctx, {
+    this.lineChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'september', 'october', 'November', 'December'],
+        labels: months,
         datasets: [{
           label: 'Mock Data',
-          data: [65, 59, 80, 81, 56, 55, 40],
+          data: data,
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 1
         }]
@@ -136,34 +146,30 @@ export class DashboardComponent implements OnInit {
   }
 
   toggleEdit(order: any) {
-    order.editing = !order.editing; // Toggle editing mode
+    order.editing = !order.editing;
   }
 
   updateStatus(order: any) {
-    this.updateDataSource();
+    console.log("updated...!");
     order.style = this.getStatusButtonStyle(order.status);
     order.editing = false;
+    console.log("order", order);
+    this.updateDataSource(order);
   }
 
-  updateDataSource() {
+  updateDataSource(order: any) {
+    this.productService.updateOrder(order).subscribe(() => {
+      this.fetchOrders();
+     });    
   }
 
-  getStatusButtonStyle(status: string) {
-    let buttonStyle = {};
+  getStatusButtonStyle(status: string): { [key: string]: string } {
     switch (status) {
-      case 'pending':
-        buttonStyle = { 'color': 'orange' };
-        break;
-      case 'paid':
-        buttonStyle = { 'color': 'green' };
-        break;
-      case 'shipped':
-        buttonStyle = { 'color': 'blue' };
-        break;
-      default:
-        buttonStyle = { 'color': 'gray' };
+      case 'pending': return { 'color': 'orange' };
+      case 'paid': return { 'color': 'green' };
+      case 'shipped': return { 'color': 'blue' };
+      default: return { 'color': 'gray' };
     }
-    return buttonStyle;
   }
 
 

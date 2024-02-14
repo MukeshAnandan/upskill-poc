@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ProductService } from '../service/product.service';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -9,8 +11,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class HeaderComponent implements OnInit {
   public searchTerm:string='';
   @Output() filterEvent = new EventEmitter<string>();
+  public searchInput:string = '';
   
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +24,16 @@ export class HeaderComponent implements OnInit {
       const value = inputElement.value.trim().toLowerCase();
       this.filterEvent.emit(value);
     }
+  }
+
+  search(event:any){
+    this.searchTerm=(event.target as HTMLInputElement).value;
+    console.log(this.searchTerm);
+    this.productService.search.next(this.searchTerm);
+  }
+
+  searchText(searchTerm:string){
+    this.productService.search.next(searchTerm);
   }
 
   

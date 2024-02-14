@@ -1,18 +1,18 @@
 <header class="header">
-    <div class="search-box">
-      <input type="text" placeholder="Search">
-      <div class="search-icon">
-          <i class="fa fa-search"></i>
-      </div>
+  <div class="search-box">
+    <input type="text" [(ngModel)]="searchInput" placeholder="Search" (input)="search($event)">
+    <div class="search-icon" (click)="searchText(searchInput)">
+      <i class="fa fa-search"></i>
     </div>
-    <div class="icons">
-      <button>
-        <i class="fas fa-cog"></i>
-      </button>
-      <button>
-        <span class="account-user-avatar">
-            <img src="../../assets/profile_small.jpg" alt="user-image" width="32" class="rounded-circle">
-        </span>
-      </button>
-    </div>
-  </header>
+  </div>
+  <div class="icons">
+    <button>
+      <i class="fa fa-gear" style="font-size:20px"></i>
+    </button>
+    <button>
+      <span class="account-user-avatar">
+        <img src="../../assets/profile_small.jpg" alt="user-image" width="32" class="rounded-circle">
+      </span>
+    </button>
+  </div>
+</header>

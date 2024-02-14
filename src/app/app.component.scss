@@ -3,46 +3,10 @@
     display: flex;
 }
 .sidebar {
-    width: 244px;
+    width: 15rem;
     height: 100%;
     background-color: #fff;
     color: #000;
-    transition: transform 0.3s ease-in-out;
-    box-shadow: 0 2px 4px rgba(0, 0, 20, .08), 0 1px 7px rgba(0, 0, 20, .08);
-}
-
-.dark-side-bar {
-    background-color: #000;
-}
-
-.content {
-    margin-left: 1rem;
-    padding: 20px;
-    transition: margin 0.3s ease-in-out;
-}
-
-.content-closed {
-    margin-left: 0;
-}
-
-.right-content {
-    margin-right: 1rem;
-    padding: 20px;
-    transition: margin 0.3s ease-in-out;
-}
-
-.right-content-closed {
-    margin-right: 0;
-}
-
-.sidebar-closed {
-    transform: translateX(-250px);
-    /* Adjust this value to match your sidebar width */
-    margin-left: 15rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 20, .08), 0 1px 7px rgba(0, 0, 20, .08);
-    width: 4rem;
-    padding-left: 1rem;
-    padding-right: 0.5rem;
 }
 
 .overlay-width {
@@ -51,7 +15,7 @@
 
 .setting {
     position: fixed;
-    width: 244px;
+    width: 15rem;
     height: 100%;
     background-color: white;
     color: #000;
@@ -60,10 +24,6 @@
     z-index: 99;
 }
 
-.setting-closed {
-    transform: translateX(-250px);
-    /* Adjust this value to match your sidebar width */
-}
 .landingpage{
     width: 85%;
 }

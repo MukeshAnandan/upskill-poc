@@ -3,16 +3,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 14px;
   background-color: transparent;
   width: 100%;
 }
 
 .search-box input {
+  outline: none;
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 200px;
 }
 
 .icons {
@@ -38,7 +38,6 @@
 .search-box {
   display: flex;
   flex-direction: row;
-  gap: 0;
 }
 
 .search-box input {

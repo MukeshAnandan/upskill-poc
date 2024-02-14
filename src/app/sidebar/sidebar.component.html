@@ -1,10 +1,13 @@
 <nav class="sidebar">
+  <span class="logo">
+    <img src="../../assets/logo-dark.svg" alt="user-image" width="100">
+  </span>
   <ul class="list-unstyled">
     <li>
       <a (click)="toggleDashboardSubmenu()">
         <i class="fa fa-home"></i>&nbsp; Dashboard
-        <span class="arrow"><i class="fa fa-angle-down"></i></span>
-        <!-- <span class="arrow">{{ dashboardSubmenuVisible ? '▲' : '▼' }}</span> -->
+        <span class="arrow" *ngIf="!dashboardSubmenuVisible"><i class="fa fa-angle-down"></i></span>
+        <span class="arrow" *ngIf="dashboardSubmenuVisible"><i class="fa fa-angle-up"></i></span>
       </a>
       <ul class="submenu" *ngIf="dashboardSubmenuVisible">
         <li><a routerLink="/Default">Default</a></li>
@@ -15,16 +18,21 @@
     <li>
       <a (click)="togglePagesSubmenu()">
         <i class="fa fa-file"></i>&nbsp; Pages
-        <span class="arrow"><i class="fa fa-angle-down"></i></span>
-        <!-- <span class="arrow">{{ pagesSubmenuVisible ? '▲' : '▼' }}</span> -->
+        <span class="arrow" *ngIf="!pagesSubmenuVisible"><i class="fa fa-angle-down"></i></span>
+        <span class="arrow" *ngIf="pagesSubmenuVisible"><i class="fa fa-angle-up"></i></span>
       </a>
       <ul class="submenu" *ngIf="pagesSubmenuVisible">
-        <li><a routerLink="/page1">page 1</a></li>
-        <li><a routerLink="/page2">page 2</a></li>
+        <li><a routerLink="/page1"> Account</a></li>
+        <li><a routerLink="/page2"> User</a></li>
       </ul>
     </li>
     <li><a routerLink="/orders"><i class="fa fa-comments"></i>&nbsp; Chat</a></li>
     <li><a routerLink="/dashboard"><i class="fa fa-calendar"></i>&nbsp; Calendar</a></li>
     <li><a routerLink="/products"><i class="fa fa-envelope"></i>&nbsp; Email</a></li>
+
+
+    <span class="welcome-image">
+      <img src="../../assets/upgrade-illustration.svg" alt="user-image" width="200">
+    </span>
   </ul>
 </nav>
