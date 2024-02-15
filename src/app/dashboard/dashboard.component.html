@@ -5,9 +5,9 @@
     </div>
     <div class="rowContainer">
       <div class="tableContainer">
-        <table mat-table [dataSource]="products" class="mat-elevation-z8">
+        <table mat-table class="mat-elevation-z8">
           <ng-container matColumnDef="recentOrders">
-            <th mat-header-cell *matHeaderCellDef colspan="6" class="recent-orders-header"> RECENT ORDERS
+            <th mat-header-cell *matHeaderCellDef class="recent-orders-header"> RECENT ORDERS
               <!-- <button class="menu-btn">
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
               </button> -->
@@ -70,37 +70,17 @@
           </div>
         </table>
       </div>
-      <div class="chartContainer">
-        <mat-card class="mt-5 mb-4">
-          <mat-card-header>
-            <mat-card-title>ORDER STATUS</mat-card-title>
-            <button class="menu-btn">
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </button>
-          </mat-card-header>
-          <mat-card-content>
-            <canvas id="myChart"></canvas>
-          </mat-card-content>
-        </mat-card>
 
+      <div class="chartContainer">
+        <app-piechart></app-piechart>
       </div>
     </div>
     <div class="wrapper">
       <div class="lineChartOutercontainer">
         <div class="lineChartContainer">
-          <div>
-            <mat-card class="mt-5 mb-4">
-              <mat-card-header>
-                <mat-card-title>MONTHLY ACTIVITY</mat-card-title>
-              </mat-card-header>
-              <mat-card-content>
-                <canvas id="lineChart" width="220" height="50"></canvas>
-              </mat-card-content>
-            </mat-card>
-          </div>
+         <app-linechart></app-linechart>
         </div>
       </div>
-
       <div class="side-container">
         <div class="saleContainer">
           <mat-card class="card mt-5 mb-4">

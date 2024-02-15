@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ export class ProductService {
 
   private apiUrl = 'http://localhost:3000/orders';
   public search = new BehaviorSubject<string>("");
+  private ordersSubject = new Subject<any>();
 
 
   constructor(private http: HttpClient) {}
@@ -31,4 +32,13 @@ export class ProductService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url);
   }
+  
+  emitOrders(products: any[]): void {
+    this.ordersSubject.next(products);
+  }
+
+  getOrdersEmitter(): Observable<any> {
+    return this.ordersSubject.asObservable();
+  }
+
 }

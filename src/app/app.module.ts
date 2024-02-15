@@ -17,6 +17,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { MatButtonModule } from '@angular/material/button';
+import { PiechartComponent } from './piechart/piechart.component';
+import { LinechartComponent } from './linechart/linechart.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
     SidebarComponent,
     HeaderComponent,
     DashboardComponent,
+    PiechartComponent,
+    LinechartComponent,
   ],
   imports: [
     BrowserModule,

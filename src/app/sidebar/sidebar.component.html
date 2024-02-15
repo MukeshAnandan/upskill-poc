@@ -5,28 +5,28 @@
   <ul class="list-unstyled">
     <li>
       <a (click)="toggleDashboardSubmenu()">
-        <i class="fa fa-home"></i>&nbsp; Dashboard
+         <i class="fa fa-home"></i>&nbsp;Dashboards
         <span class="arrow" *ngIf="!dashboardSubmenuVisible"><i class="fa fa-angle-down"></i></span>
         <span class="arrow" *ngIf="dashboardSubmenuVisible"><i class="fa fa-angle-up"></i></span>
       </a>
       <ul class="submenu" *ngIf="dashboardSubmenuVisible">
-        <li><a routerLink="/Default">Default</a></li>
-        <li><a routerLink="/E-commerce">E-commerce</a></li>
-        <li><a routerLink="/crm">CRM</a></li>
+        <li><a routerLink="/Default">&nbsp; Default</a></li>
+        <li><a routerLink="/E-commerce">&nbsp; E-commerce</a></li>
+        <li><a routerLink="/crm">&nbsp; CRM</a></li>
       </ul>
     </li>
     <li>
       <a (click)="togglePagesSubmenu()">
-        <i class="fa fa-file"></i>&nbsp; Pages
+        &nbsp;<i class="fa fa-file"></i>&nbsp; Pages
         <span class="arrow" *ngIf="!pagesSubmenuVisible"><i class="fa fa-angle-down"></i></span>
         <span class="arrow" *ngIf="pagesSubmenuVisible"><i class="fa fa-angle-up"></i></span>
       </a>
       <ul class="submenu" *ngIf="pagesSubmenuVisible">
-        <li><a routerLink="/page1"> Account</a></li>
-        <li><a routerLink="/page2"> User</a></li>
+        <li><a routerLink="/page1">&nbsp; Account</a></li>
+        <li><a routerLink="/page2"> &nbsp; User</a></li>
       </ul>
     </li>
-    <li><a routerLink="/orders"><i class="fa fa-comments"></i>&nbsp; Chat</a></li>
+    <li><a routerLink="/orders"><i class="fa fa-comments"></i> Chat</a></li>
     <li><a routerLink="/dashboard"><i class="fa fa-calendar"></i>&nbsp; Calendar</a></li>
     <li><a routerLink="/products"><i class="fa fa-envelope"></i>&nbsp; Email</a></li>
 

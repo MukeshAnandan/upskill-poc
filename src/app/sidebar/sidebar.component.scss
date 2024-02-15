@@ -2,7 +2,7 @@
     height: 100%;
     background-color: #00233F;
     color: #87A3B3;
-    padding-top: 50px;
+    padding-top: 20px;
     position: relative;
   }
   .logo{
@@ -18,6 +18,7 @@
   
   .sidebar ul li {
     list-style-type: none;
+    margin-bottom: 1rem;
   }
   
   .sidebar ul li a {
@@ -44,6 +45,7 @@
   
   .sidebar .submenu li {
     list-style-type: none;
+    margin-bottom: 0;
   }
   
   .sidebar .submenu li a {
@@ -61,6 +63,11 @@
     color: #fff;
   }
 
+  .list-unstyled{
+    padding-top: 20px;
+    font-style: normal;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
   .sidebar .list-unstyled li a {
     align-items: center;
     padding: 10px;

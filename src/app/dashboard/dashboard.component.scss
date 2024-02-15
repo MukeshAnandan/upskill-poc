@@ -24,6 +24,10 @@
 
 .tableContainer {
   width: 80%;
+  max-height: 355px; 
+  overflow-y: auto; 
+  overflow-x: auto; 
+
 }
 
 .chartContainer {
@@ -34,6 +38,7 @@
   font-size: 18px;
   font-weight: bold;
   color: black;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .content {

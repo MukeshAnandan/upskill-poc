@@ -1,11 +1,17 @@
 <header class="header">
   <div class="search-box">
-    <input type="text" [(ngModel)]="searchInput" placeholder="Search" (input)="search($event)">
+    <input type="text" [(ngModel)]="searchInput" placeholder="Search..." (input)="search($event)">
     <div class="search-icon" (click)="searchText(searchInput)">
       <i class="fa fa-search"></i>
     </div>
   </div>
   <div class="icons">
+    <button>
+      <i class="fa-solid fa-sun-bright" style="font-size:20px"></i>
+    </button>
+    <button>
+      <i class="fa-solid fa-bell" style="font-size:20px"></i>
+    </button>
     <button>
       <i class="fa fa-gear" style="font-size:20px"></i>
     </button>

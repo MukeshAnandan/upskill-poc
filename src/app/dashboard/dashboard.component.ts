@@ -52,7 +52,8 @@ export class DashboardComponent implements OnInit {
       .subscribe((orders: any) => {
         console.log("fetch orders", orders);
         this.products = orders;
-        this.createPieChart();
+        this.productService.emitOrders(this.products); // Emit the products value
+        // this.createPieChart();
         this.createLineChart();
       });
   }
@@ -165,10 +166,10 @@ export class DashboardComponent implements OnInit {
 
   getStatusButtonStyle(status: string): { [key: string]: string } {
     switch (status) {
-      case 'pending': return { 'color': 'orange' };
-      case 'paid': return { 'color': 'green' };
-      case 'shipped': return { 'color': 'blue' };
-      default: return { 'color': 'gray' };
+      case 'pending': return { 'font-weight': 'bold', 'color': 'orange' };
+      case 'paid': return { 'font-weight': 'bold', 'color': 'green' };
+      case 'shipped': return { 'font-weight': 'bold', 'color': 'blue' };
+      default: return {'font-weight': 'bold', 'color': 'gray' };
     }
   }
 
