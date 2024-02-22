@@ -1,16 +1,13 @@
-<div class="container">
-  <div class="innerContainer">
-    <div class="dashboardContent">
-      <p> Dashboard</p>
-    </div>
-    <div class="rowContainer">
+<div class="dashboardContainer">
+  <div class="dashboardContent">
+    <p> Dashboard</p>
+  </div>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]="3" [rowspan]="5">
       <div class="tableContainer">
         <table mat-table class="mat-elevation-z8">
           <ng-container matColumnDef="recentOrders">
             <th mat-header-cell *matHeaderCellDef class="recent-orders-header"> RECENT ORDERS
-              <!-- <button class="menu-btn">
-                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-              </button> -->
             </th>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="['recentOrders']"></tr>
@@ -19,6 +16,11 @@
           class="mat-elevation-z8">
 
           <div class="tableData">
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let order"> {{ order.id }} </td>
+            </ng-container>
+
             <ng-container matColumnDef="customerId">
               <th mat-header-cell *matHeaderCellDef> Customer ID </th>
               <td mat-cell *matCellDef="let order"> {{ order.customerId }} </td>
@@ -56,6 +58,7 @@
                   <option value="pending">Pending</option>
                   <option value="paid">Paid</option>
                   <option value="shipped">Shipped</option>
+                  <option value="not paid">Not Paid</option>
                 </select>
               </td>
             </ng-container>
@@ -70,17 +73,20 @@
           </div>
         </table>
       </div>
-
-      <div class="chartContainer">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="5">
+      <div>
         <app-piechart></app-piechart>
       </div>
-    </div>
-    <div class="wrapper">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="3">
       <div class="lineChartOutercontainer">
         <div class="lineChartContainer">
-         <app-linechart></app-linechart>
+          <app-linechart></app-linechart>
         </div>
       </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="3">
       <div class="side-container">
         <div class="saleContainer">
           <mat-card class="card mt-5 mb-4">
@@ -109,6 +115,6 @@
           </mat-card>
         </div>
       </div>
-    </div>
-  </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

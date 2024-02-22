@@ -1,52 +1,41 @@
-.container {
-  margin-top: 20px;
-  margin: 1rem;
-  width: 100%;
-  height: 85%;
+.dashboardContainer {
+  padding:0.063rem 0 0 2.5rem;
 }
-
 .innerContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .mat-mb-1 {
   margin-bottom: 1rem;
 }
 
-.rowContainer {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-
 .tableContainer {
-  width: 80%;
-  max-height: 355px; 
+  width: 100%;
+  max-height:455px;
   overflow-y: auto; 
   overflow-x: auto; 
 
 }
-
 .chartContainer {
   width: 20%;
 }
 .dashboardContent {
-  bottom: 10px;
-  font-size: 18px;
+  bottom: 0.625rem;
+  font-size: 1.125rem;
   font-weight: bold;
   color: black;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .content {
-  bottom: 10px;
-  font-size: 18px;
+  bottom: 0.6rem;
+  font-size: 1.125rem;
   font-weight: bold;
   color: black;
-  margin-left: 20px;
+  margin-left: 1.25rem;
 }
 
 table {
@@ -56,12 +45,12 @@ table {
 }
 
 .mat-table {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .mat-card {
   height: 100%;
-  padding: 10px;
+  padding: 0.625rem;
 }
 
 .mat-elevation-z8 {
@@ -70,14 +59,18 @@ table {
 
 th.mat-header-cell,
 td.mat-cell {
-  padding: 10px;
+  padding: 0.625rem;
   text-align: left;
 }
 
+tr.mat-row, tr.mat-footer-row {
+  height: 4.25rem;
+}
+
+
 .recent-orders-header {
   background-color: white;
-  /* Set background color to white */
-  font-size: 18px;
+  font-size: 0.9rem;
   font-weight: bold;
   color: black;
 }
@@ -104,7 +97,7 @@ td.mat-cell {
 }
 
 .product-container img {
-  margin-right: 10px;
+  margin-right: 0.625rem;
 }
 
 .lineChartContainer {
@@ -114,18 +107,13 @@ td.mat-cell {
 }
 
 .mat-card-title {
-  font-size: 16px;
+  font-size: 0.9rem;
   font-weight: bold;
   color: black;
 }
 
-.tableData {
-  overflow: auto;
-  max-height: 200px;
-}
-
 .lineChartOutercontainer {
-  width: 80%;
+  width: 100%;
   display: flex;
 }
 
@@ -152,7 +140,6 @@ td.mat-cell {
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  outline: none;
   border: none;
   -webkit-tap-highlight-color: transparent;
   display: inline-block;
@@ -161,25 +148,23 @@ td.mat-cell {
   vertical-align: baseline;
   text-align: center;
   margin: 0;
-  line-height: 20px;
+  line-height: 1.25rem;
   padding: 0;
-  border-radius: 4px;
-}
-
-.wrapper {
-  display: flex;
-  gap: 16px;
+  border-radius: 0.50rem;
 }
 
 .side-container {
   flex-direction: column;
   justify-content: space-between;
-  width: 20%;
+  height: inherit;
+  display: flex;
+  gap: 1.25rem;
+  width: 85%;
 }
 
 .saleContainer,
 .expenseContainer {
-  margin-top: 5px;
+  margin-top: 0.313rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -187,8 +172,9 @@ td.mat-cell {
 }
 
 .card {
-  height: 8.5rem;
+  height: 7.4rem;
   position: relative;
+  bottom: 0.313rem;
 
 }
 
@@ -203,7 +189,7 @@ td.mat-cell {
   font-weight: lighter;
   position: absolute;
   display: flex;
-  right: 8px;
+  right: 0.5rem;
   background: none;
   border: none;
   cursor: pointer;

@@ -28,10 +28,10 @@ export class ProductService {
     return this.http.put(url, order);
   }
 
-  deleteOrder(id: number) {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.delete(url);
-  }
+  // deleteOrder(id: number) {
+  //   const url = `${this.apiUrl}/${id}`;
+  //   return this.http.delete(url);
+  // }
   
   emitOrders(products: any[]): void {
     this.ordersSubject.next(products);

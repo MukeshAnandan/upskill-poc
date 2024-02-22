@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +21,12 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { MatButtonModule } from '@angular/material/button';
 import { PiechartComponent } from './piechart/piechart.component';
 import { LinechartComponent } from './linechart/linechart.component';
+import { MatSidenavModule } from '@angular/material/sidenav'; // Import MatSidenavModule
+import { MatListModule } from '@angular/material/list'; // Import MatListModule
+import { MatExpansionModule } from '@angular/material/expansion'; 
+import {MatBadgeModule} from '@angular/material/badge';
+
+
 
 @NgModule({
   declarations: [
@@ -31,6 +39,7 @@ import { LinechartComponent } from './linechart/linechart.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     MatTableModule,
@@ -42,7 +51,11 @@ import { LinechartComponent } from './linechart/linechart.component';
     MatGridListModule,
     MatToolbarModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatExpansionModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

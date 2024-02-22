@@ -27,7 +27,6 @@ export class PiechartComponent implements OnInit {
   }
 
   createPieChart(): void {
-    // Destroy existing chart if it exists
     if (this.chart) {
       this.chart.destroy();
     }
@@ -45,26 +44,36 @@ export class PiechartComponent implements OnInit {
     this.chart = new Chart(ctx, {
       type: 'pie',
       data: {
+        labels: statusLabels,
         datasets: [{
           label: 'Order Status',
           data: statusData,
           backgroundColor: [
-            'rgba(255, 99, 132, 0.5)',
-            'rgba(54, 162, 235, 0.5)',
-            'rgba(255, 206, 86, 0.5)'
+            '#42B5D4',
+            '#45D48C',
+            '#EDD460',
+            '#DC416B'
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)'
+            '#42B5D4',
+            '#45D48C',
+            '#EDD460',
+            '#DC416B'
           ],
-          borderWidth: 1
+          borderWidth: 0
         }],
-        labels: statusLabels
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        aspectRatio: 0.9,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+            }
+          }
+        }
       }
     });
   }

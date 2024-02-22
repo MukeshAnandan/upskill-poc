@@ -2,22 +2,35 @@
   <div class="search-box">
     <input type="text" [(ngModel)]="searchInput" placeholder="Search..." (input)="search($event)">
     <div class="search-icon" (click)="searchText(searchInput)">
-      <i class="fa fa-search"></i>
+      <button mat-mini-fab class="custom-mini-fab-search">
+        <mat-icon>search</mat-icon>
+      </button>
     </div>
   </div>
   <div class="icons">
-    <button>
-      <i class="fa-solid fa-sun-bright" style="font-size:20px"></i>
+    <button mat-mini-fab class="custom-mini-fab">
+      <mat-icon class="small-icon">wb_sunny</mat-icon>
     </button>
-    <button>
-      <i class="fa-solid fa-bell" style="font-size:20px"></i>
-    </button>
-    <button>
-      <i class="fa fa-gear" style="font-size:20px"></i>
-    </button>
-    <button>
+    <div class="divider"></div>
+    <button class="rounded-circle">
       <span class="account-user-avatar">
-        <img src="../../assets/profile_small.jpg" alt="user-image" width="32" class="rounded-circle">
+        <img src="../../assets/country-flag.png" alt="user-image" style="width: 25px; height: 25px;">
+      </span>
+    </button>
+    <div class="divider"></div>
+    <button mat-mini-fab class="custom-mini-fab">
+      <mat-icon matBadge="15+" matBadgeColor="warn" class="small-icon">notifications_none</mat-icon>
+    </button>
+    <button mat-mini-fab class="custom-mini-fab">
+      <mat-icon class="small-icon">shutter_speed</mat-icon>
+    </button>
+    <button mat-mini-fab class="custom-mini-fab">
+      <mat-icon class="small-icon">settings</mat-icon>
+    </button>
+    <div class="divider"></div>
+    <button class="rounded-circle">
+      <span class="account-user-avatar">
+        <img src="../../assets/profile_small.jpg" alt="user-image" width="25">
       </span>
     </button>
   </div>

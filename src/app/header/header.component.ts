@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductService } from '../service/product.service';
-import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -28,7 +27,6 @@ export class HeaderComponent implements OnInit {
 
   search(event:any){
     this.searchTerm=(event.target as HTMLInputElement).value;
-    console.log(this.searchTerm);
     this.productService.search.next(this.searchTerm);
   }
 

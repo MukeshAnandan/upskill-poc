@@ -7,7 +7,7 @@ import { ProductService } from '../service/product.service';
 Chart.register(...registerables, PieController);
 
 interface Order {
-  id: number;
+  id: string;
   customerId: string;
   productName: string;
   status: string;
@@ -25,6 +25,7 @@ interface Order {
 })
 export class DashboardComponent implements OnInit {
   displayedColumns: string[] = [
+    'id',
     'customerId', 
     'productName', 
     'orderDate', 
@@ -50,100 +51,14 @@ export class DashboardComponent implements OnInit {
   fetchOrders(): void {
     this.productService.getOrders()
       .subscribe((orders: any) => {
-        console.log("fetch orders", orders);
         this.products = orders;
-        this.productService.emitOrders(this.products); // Emit the products value
-        // this.createPieChart();
-        this.createLineChart();
+        this.productService.emitOrders(this.products);
       });
   }
 
   applySearchFilter(searchTerm: string): void {
     this.filteredProducts = this.products
       .filter(product => product.productName.toLowerCase().includes(searchTerm.toLowerCase()));
-    console.log("filtered products:", this.filteredProducts);
-  }
-
-  getStatusColor(status: string): string {
-    const statusColors: { [key: string]: string } = {
-      'paid': 'green',
-      'pending': 'orange',
-      'shipped': 'blue'
-    };
-  
-    return statusColors[status] || 'black';
-  }
-
-  createPieChart(): void {
-    // Destroy existing chart if it exists
-    if (this.chart) {
-      this.chart.destroy();
-    }
-    const statusCounts: { [key: string]: number } = {};
-
-    this.products.forEach(order => {
-      statusCounts[order.status] = (statusCounts[order.status] || 0) + 1;
-    });
-
-    const statusData = Object.values(statusCounts);
-    const statusLabels = Object.keys(statusCounts);
-    
-    const ctx = document.getElementById('myChart') as HTMLCanvasElement;
-
-    this.chart = new Chart(ctx, {
-      type: 'pie',
-      data: {
-        datasets: [{
-          label: 'Order Status',
-          data: statusData,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.5)',
-            'rgba(54, 162, 235, 0.5)',
-            'rgba(255, 206, 86, 0.5)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)'
-          ],
-          borderWidth: 1
-        }],
-        labels: statusLabels
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-      }
-    });
-  }
-
-  createLineChart(): void {
-    // Destroy existing chart if it exists
-    if (this.lineChart) {
-      this.lineChart.destroy();
-    }
-    const data = [65, 59, 80, 81, 56, 55, 40, 30, 45, 60, 70, 80]; // Example data for each month
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const ctx = document.getElementById('lineChart') as HTMLCanvasElement;
-    this.lineChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: months,
-        datasets: [{
-          label: 'Mock Data',
-          data: data,
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
   }
 
   toggleEdit(order: any) {
@@ -151,10 +66,7 @@ export class DashboardComponent implements OnInit {
   }
 
   updateStatus(order: any) {
-    console.log("updated...!");
-    order.style = this.getStatusButtonStyle(order.status);
     order.editing = false;
-    console.log("order", order);
     this.updateDataSource(order);
   }
 
@@ -166,12 +78,12 @@ export class DashboardComponent implements OnInit {
 
   getStatusButtonStyle(status: string): { [key: string]: string } {
     switch (status) {
-      case 'pending': return { 'font-weight': 'bold', 'color': 'orange' };
-      case 'paid': return { 'font-weight': 'bold', 'color': 'green' };
-      case 'shipped': return { 'font-weight': 'bold', 'color': 'blue' };
+      case 'pending': return { 'font-weight': 'bold', 'color': '#EDD460', 'background': '#fbf2e1' };
+      case 'paid': return { 'font-weight': 'bold', 'color': '#45D48C', 'background':  '#d8f1d8' };
+      case 'shipped': return { 'font-weight': 'bold', 'color': '#42B5D4', 'background': '#d7d7f9' };
+      case 'not paid': return { 'font-weight': 'bold', 'color': '#DC416B', 'background': '#FDDCE5' };
       default: return {'font-weight': 'bold', 'color': 'gray' };
     }
   }
-
 
 }
