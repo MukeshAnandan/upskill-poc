@@ -4,7 +4,7 @@
       "id": "1",
       "customerId": "83-5980503",
       "productName": "Black backpack",
-      "status": "paid",
+      "status": "not paid",
       "customerName": "Bradney",
       "orderDate": "1/5/2024",
       "price": "$205.82",
